@@ -93,6 +93,9 @@ public class CountdownLabel: LTMorphingLabel {
     
     internal var counting: Bool = false
     internal var endOfTimer: Bool {
+        if reverse == true {
+            return false
+        }
         return timeCounted >= currentTime
     }
     internal var finished: Bool = false {
