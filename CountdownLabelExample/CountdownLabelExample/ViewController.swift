@@ -41,8 +41,9 @@ class ViewController: UIViewController {
         countdownLabelBurn.animationType = .Burn
         countdownLabelBurn.start()
         
-        countdownLabelEvaporate.setCountDownTime(minutes: 60*60)
+        countdownLabelEvaporate.setCountDownTime(minutes: 23.99*60*60)
         countdownLabelEvaporate.animationType = .Evaporate
+        countdownLabelEvaporate.reverse = true
         countdownLabelEvaporate.start()
         
         countdownLabelFall.setCountDownTime(minutes: 60*60)

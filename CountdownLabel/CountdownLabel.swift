@@ -24,6 +24,7 @@ extension TimeInterval {
 
 public class CountdownLabel: LTMorphingLabel {
     
+    public var reverse = false
     public typealias CountdownCompletion = () -> ()?
     public typealias CountdownExecution = () -> ()
     internal let defaultFireInterval = 1.0
@@ -271,12 +272,13 @@ extension CountdownLabel {
     }
     
     func updateText() {
+        
+        let reverseMod = reverse ? 1.0 : -1.0
         guard diffDate != nil else { return }
-
         // if time is before start
         let formattedText = timeCounted < 0
             ? dateFormatter.string(from: date1970.addingTimeInterval(0) as Date)
-            : dateFormatter.string(from: diffDate.addingTimeInterval(round(timeCounted * -1)) as Date)
+            : dateFormatter.string(from: diffDate.addingTimeInterval(round(timeCounted * reverseMod)) as Date)
         
         if let countdownAttributedText = countdownAttributedText {
             let attrTextInRange = NSAttributedString(string: formattedText, attributes: countdownAttributedText.attributes)
